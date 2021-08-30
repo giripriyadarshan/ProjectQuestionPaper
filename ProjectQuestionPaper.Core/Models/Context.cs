@@ -12,7 +12,7 @@ namespace ProjectQuestionPaper.Core.Models
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            _ = optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Database=ProjectQuestionPaper;Trusted_Connection=True");
+            _ = optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Database=ProjectQuestionPaper;Trusted_Connection=True;Connect Timeout=300");
         }
     }
 }
