@@ -21,6 +21,9 @@ namespace ProjectQuestionPaper.Services
             Configure<HomeViewModel, HomePage>();
             Configure<AdminViewModel, AdminPage>();
             Configure<SettingsViewModel, SettingsPage>();
+
+            Configure<ContentsViewModel, ContentsPage>();
+            Configure<PostLoginViewModel, PostLoginPage>();
         }
 
         public Type GetPageType(string key)

@@ -9,7 +9,6 @@ using ProjectQuestionPaper.Helpers;
 using ProjectQuestionPaper.Services;
 using ProjectQuestionPaper.ViewModels;
 using ProjectQuestionPaper.Views;
-using ProjectQuestionPaper.Core.Models;
 
 // To learn more about WinUI3, see: https://docs.microsoft.com/windows/apps/winui/winui3/.
 namespace ProjectQuestionPaper
@@ -70,6 +69,10 @@ namespace ProjectQuestionPaper
 
             _ = services.AddTransient<ContentsPage>();
             _ = services.AddTransient<ContentsViewModel>();
+            _ = services.AddTransient<PostLoginPage>();
+            _ = services.AddTransient<PostLoginViewModel>();
+            _ = services.AddTransient<AddContentsPage>();
+            _ = services.AddTransient<AddContentsViewModel>();
             return services.BuildServiceProvider();
         }
     }

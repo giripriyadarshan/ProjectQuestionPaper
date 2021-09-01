@@ -15,7 +15,9 @@
     <NoWarn>CA1416, $(NoWarn)</NoWarn>
   </PropertyGroup>
   <ItemGroup>
+    <None Remove="Views\AddContentsPage.xaml" />
     <None Remove="Views\ContentsPage.xaml" />
+    <None Remove="Views\PostLoginPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,5 +43,15 @@
   </ItemGroup>
 	<ItemGroup>
 		<Resource Include="Views\LocalResources\adobepdfimage.png" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\AddContentsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\PostLoginPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 </Project>
