@@ -24,6 +24,7 @@ namespace ProjectQuestionPaper.Services
 
             Configure<ContentsViewModel, ContentsPage>();
             Configure<PostLoginViewModel, PostLoginPage>();
+            Configure<AddContentsViewModel, AddContentsPage>();
         }
 
         public Type GetPageType(string key)

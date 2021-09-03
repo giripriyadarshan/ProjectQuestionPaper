@@ -16,8 +16,8 @@ namespace ProjectQuestionPaper.ViewModels
 
     public class ContentsItems
     {
-        public ObservableCollection<MenuItem> TreeViewControl = new();
-        public readonly ListBox ListBoxControl = new();
+        public ObservableCollection<MenuItem> TreeViewControl { get; set; }
+        public ListBox ListBoxControl { get; set; }
 
         public void GetTreeViewControl()
         {
@@ -62,9 +62,10 @@ namespace ProjectQuestionPaper.ViewModels
 
         public void GetListBoxControl()
         {
+            ListBoxControl = new();
             using var context = new Context();
 
-            foreach(var files in context.Files.ToList())
+            foreach (var files in context.Files.ToList())
             {
                 ListBoxControl.Items.Add(new ListOfFiles()
                 {

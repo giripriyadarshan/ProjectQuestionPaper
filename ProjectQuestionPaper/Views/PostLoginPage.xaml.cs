@@ -23,5 +23,20 @@ namespace ProjectQuestionPaper.Views
             ViewModel = Ioc.Default.GetService<PostLoginViewModel>();
             InitializeComponent();
         }
+
+        private void AddPapers_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+            _ = Frame.Navigate(typeof(AddContentsPage));
+        }
+
+        private void GoBack_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeletePapers_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+        {
+
+        }
     }
 }

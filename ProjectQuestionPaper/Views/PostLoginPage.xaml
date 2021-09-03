@@ -30,21 +30,21 @@
                        HorizontalAlignment="Center" VerticalAlignment="Center"
                        />
 
-                <Button x:Name="DeletePapers" Content="Delete Papers" 
+                <Button x:Name="DeletePapers" Content="Delete Papers" Click="DeletePapers_Click"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                         HorizontalAlignment="Center" VerticalAlignment="Center"
                         Margin="50,10" Width="250" Height="100" FontSize="25"
                     Grid.Column="0" Grid.Row="2" 
                     />
 
-                <Button x:Name="AddPapers" Content="Add Papers"
+                <Button x:Name="AddPapers" Content="Add Papers" Click="AddPapers_Click"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                         HorizontalAlignment="Center" VerticalAlignment="Center"
                         Margin="50,10" Width="250" Height="150" FontSize="25"
                     Grid.Column="1" Grid.Row="3" 
                     />
 
-                <Button x:Name="GoBack" Content="Go back (Logout)"
+                <Button x:Name="GoBack" Content="Go back (Logout)" Click="GoBack_Click"
                     HorizontalContentAlignment="Center" VerticalContentAlignment="Center" 
                         HorizontalAlignment="Center" VerticalAlignment="Center"
                         Margin="50,10" Width="250" Height="100" FontSize="25"

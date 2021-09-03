@@ -53,7 +53,7 @@
                        VerticalAlignment="Center" Margin="20" 
                        Grid.Row="0" Grid.Column="0"
                        />
-                    <TextBox x:Name="UsernameInput"
+                    <TextBox x:Name="UsernameInput" Text="{x:Bind Path=ViewModel.UsernameInput, Mode=TwoWay}"
                     Grid.Row="0" Grid.Column="1"
                            FontSize="20"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -64,7 +64,7 @@
                        VerticalAlignment="Center" Margin="20" 
                        Grid.Row="1" Grid.Column="0"
                        />
-                    <PasswordBox x:Name="PasswordInput"
+                    <PasswordBox x:Name="PasswordInput" Password="{x:Bind Path=ViewModel.PasswordInput, Mode=TwoWay}"
                               Grid.Row="1" Grid.Column="1"
                            FontSize="20"
                            HorizontalAlignment="Left" VerticalAlignment="Center"
@@ -75,15 +75,17 @@
                         HorizontalAlignment="Center" VerticalAlignment="Center"
                         FontSize="35" FontWeight="SemiBold"
                         Width="290" Margin="241,26,191,35"
-                            Click="LoginButton_Click"
+                            Click="{x:Bind ViewModel.Login}"
                         />
 
-                    <Popup VerticalOffset="10" HorizontalOffset="200" x:Name="PopupItem" IsLightDismissEnabled="True">
+                    <Popup x:Name="PopupItem" IsLightDismissEnabled="True" IsOpen="{x:Bind Path=ViewModel.PopupItem, Mode=TwoWay}">
                         <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
-                BorderThickness="2" Width="200" Height="200">
+                BorderThickness="2" Width="400" Height="200">
                             <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
-                                <TextBlock Text="Login Failed" FontSize="30" HorizontalAlignment="Center" Margin="10"/>
+                                <TextBlock Text="LOGIN FAILED" FontSize="45" HorizontalAlignment="Center" Margin="10"/>
+                                <TextBlock x:Name="PopupMessage" Text="{x:Bind Path=ViewModel.PopupMessage, Mode=TwoWay}"
+                                           FontSize="25" HorizontalAlignment="Center" Margin="10"/>
                             </StackPanel>
                         </Border>
                     </Popup>

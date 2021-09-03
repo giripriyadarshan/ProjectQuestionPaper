@@ -2,7 +2,12 @@
 
 namespace ProjectQuestionPaper.ViewModels
 {
-    public class AddContentsViewModel : ObservableRecipient
+    public class AddContentsViewModel : ObservableObject
     {
+        public AddContentsViewModel()
+        {
+
+        }
+
     }
 }
