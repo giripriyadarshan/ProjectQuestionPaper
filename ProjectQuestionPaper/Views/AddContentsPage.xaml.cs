@@ -39,48 +39,52 @@ namespace ProjectQuestionPaper.Views
             using var context = new Context();
 
             var semester = context.Semesters
-                .Where(s => s.Sem == int.Parse(SemesterInput.Text.Trim()))
-                .FirstOrDefault();
+                .FirstOrDefault(s => s.Sem == int.Parse(SemesterInput.Text.Trim()));
             if (semester == null)
             {
-                semester = new();
-                semester.Sem = int.Parse(SemesterInput.Text.Trim());
+                semester = new Semester
+                {
+                    Sem = int.Parse(SemesterInput.Text.Trim())
+                };
                 _ = context.Semesters.Add(semester);
             }
 
             var subject = context.Subjects
                 .Where(s => s.SubjectName == SubjectInput.Text.Trim().ToLower())
-                .Where(s => s.Semester == semester)
-                .FirstOrDefault();
+                .FirstOrDefault(s => s.Semester == semester);
             if (subject == null)
             {
-                subject = new();
-                subject.Semester = semester;
-                subject.SubjectName = SubjectInput.Text.Trim().ToLower();
+                subject = new Subject
+                {
+                    Semester = semester,
+                    SubjectName = SubjectInput.Text.Trim().ToLower()
+                };
                 _ = context.Subjects.Add(subject);
             }
 
             var year = context.Years
-                .Where(y => y.Subject == subject)
                 .Where(y => y.YearNumber == int.Parse(YearInput.Text.Trim()))
-                .FirstOrDefault();
+                .FirstOrDefault(y => y.Subject == subject);
             if (year == null)
             {
-                year = new();
-                year.Subject = subject;
-                year.YearNumber = int.Parse(YearInput.Text.Trim());
+                year = new Year
+                {
+                    Subject = subject,
+                    YearNumber = int.Parse(YearInput.Text.Trim())
+                };
                 _ = context.Years.Add(year);
             }
 
             var file = context.Files
-                .Where(f => f.Year == year)
                 //.Where(f => f.FileName == _filename)
-                .FirstOrDefault();
+                .FirstOrDefault(f => f.Year == year);
             if (file == null)
             {
-                file = new();
-                file.Year = year;
-                file.FileName = "TEST"; // to be replaced with _filename
+                file = new File
+                {
+                    Year = year,
+                    FileName = "TEST" // to be replaced with _filename
+                };
                 _ = context.Files.Add(file);
             }
             else
@@ -96,7 +100,7 @@ namespace ProjectQuestionPaper.Views
 
         private bool IsInputValid()
         {
-            var valid = true;
+            bool valid = true;
 
             if (string.IsNullOrWhiteSpace(SemesterInput.Text))
             {

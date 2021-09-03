@@ -7,7 +7,7 @@ namespace ProjectQuestionPaper.ViewModels
 {
     public class AdminViewModel : ObservableObject
     {
-        public INavigationService NavigationService { get; }
+        private INavigationService NavigationService { get; }
 
         public AdminViewModel(INavigationService navigationService)
         {
@@ -47,8 +47,7 @@ namespace ProjectQuestionPaper.ViewModels
             using var context = new Context();
 
             var admin = context.Admins
-                .Where(u => u.Username == UsernameInput)
-                .FirstOrDefault();
+                .FirstOrDefault(u => u.Username == UsernameInput);
 
             if (admin != null)
             {
