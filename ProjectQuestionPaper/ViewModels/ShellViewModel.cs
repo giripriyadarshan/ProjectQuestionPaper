@@ -1,11 +1,8 @@
-﻿using System;
-
-using CommunityToolkit.Mvvm.ComponentModel;
-
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.UI.Xaml.Navigation;
-
 using ProjectQuestionPaper.Contracts.Services;
 using ProjectQuestionPaper.Views;
+using static ProjectQuestionPaper.Core.Models.Miscellaneous;
 
 namespace ProjectQuestionPaper.ViewModels
 {
@@ -20,14 +17,14 @@ namespace ProjectQuestionPaper.ViewModels
 
         public bool IsBackEnabled
         {
-            get { return _isBackEnabled; }
-            set { SetProperty(ref _isBackEnabled, value); }
+            get => _isBackEnabled;
+            set => SetProperty(ref _isBackEnabled, value);
         }
 
         public object Selected
         {
-            get { return _selected; }
-            set { SetProperty(ref _selected, value); }
+            get => _selected;
+            set => SetProperty(ref _selected, value);
         }
 
         public ShellViewModel(INavigationService navigationService, INavigationViewService navigationViewService)
@@ -39,21 +36,30 @@ namespace ProjectQuestionPaper.ViewModels
 
         private void OnNavigated(object sender, NavigationEventArgs e)
         {
-            if (e.SourcePageType == typeof(SettingsPage))
+            var pageType = e.SourcePageType;
+
+            if (pageType == typeof(SettingsPage))
             {
                 Selected = NavigationViewService.SettingsItem;
                 return;
             }
 
-            var selectedItem = NavigationViewService.GetSelectedItem(e.SourcePageType);
+            var selectedItem = NavigationViewService.GetSelectedItem(pageType);
             if (selectedItem != null)
             {
                 Selected = selectedItem;
             }
 
-            if (e.SourcePageType == typeof(HomePage))
+            if (pageType == typeof(HomePage))
             {
                 NavigationService.Frame.BackStack.Clear();
+            }
+            else if (pageType == typeof(AdminPage) && !LoginSession)
+            {
+                if (NavigationService.Frame.BackStack[NavigationService.Frame.BackStackDepth - 1].SourcePageType == typeof(PostLoginPage))
+                {
+                    NavigationService.Frame.BackStack.RemoveAt(NavigationService.Frame.BackStackDepth - 1);
+                }
             }
 
             IsBackEnabled = NavigationService.CanGoBack;

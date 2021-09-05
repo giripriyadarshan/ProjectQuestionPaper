@@ -3,7 +3,7 @@
 using Microsoft.UI.Xaml.Controls;
 
 using ProjectQuestionPaper.ViewModels;
-using ProjectQuestionPaper.Core.Models;
+using static ProjectQuestionPaper.Core.Models.Miscellaneous;
 using System.Linq;
 
 // To learn more about WinUI, the WinUI project structure,
@@ -31,7 +31,8 @@ namespace ProjectQuestionPaper.Views
 
         private void GoBack_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
         {
-
+            LoginSession = false;
+            _ = Frame.Navigate(typeof(AdminPage));
         }
 
         private void DeletePapers_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)

@@ -2,6 +2,7 @@
 using System.Linq;
 using CommunityToolkit.Mvvm.ComponentModel;
 using ProjectQuestionPaper.Contracts.Services;
+using static ProjectQuestionPaper.Core.Models.Miscellaneous;
 
 namespace ProjectQuestionPaper.ViewModels
 {
@@ -42,6 +43,14 @@ namespace ProjectQuestionPaper.ViewModels
             set => SetProperty(ref _popupitem, value);
         }
 
+        public void Loaded()
+        {
+            if (LoginSession)
+            {
+                _ = NavigationService.Frame.Navigate(typeof(Views.PostLoginPage));
+            }
+        }
+
         public void Login()
         {
             using var context = new Context();
@@ -53,7 +62,7 @@ namespace ProjectQuestionPaper.ViewModels
             {
                 if (admin.Password == PasswordInput)
                 {
-                    // set login session
+                    LoginSession = true;
                     _ = NavigationService.Frame.Navigate(typeof(Views.PostLoginPage));
                 }
                 else
