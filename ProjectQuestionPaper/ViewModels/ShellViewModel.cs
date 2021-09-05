@@ -2,7 +2,7 @@
 using Microsoft.UI.Xaml.Navigation;
 using ProjectQuestionPaper.Contracts.Services;
 using ProjectQuestionPaper.Views;
-using static ProjectQuestionPaper.Core.Models.Miscellaneous;
+using static ProjectQuestionPaper.Models.LoginSession;
 
 namespace ProjectQuestionPaper.ViewModels
 {
@@ -54,7 +54,7 @@ namespace ProjectQuestionPaper.ViewModels
             {
                 NavigationService.Frame.BackStack.Clear();
             }
-            else if (pageType == typeof(AdminPage) && !LoginSession)
+            else if (pageType == typeof(AdminPage) && !LoginSessionState)
             {
                 if (NavigationService.Frame.BackStack[NavigationService.Frame.BackStackDepth - 1].SourcePageType == typeof(PostLoginPage))
                 {

@@ -80,7 +80,7 @@
                             Click="{x:Bind ViewModel.Login}"
                         />
 
-                    <Popup x:Name="PopupItem" IsLightDismissEnabled="True" IsOpen="{x:Bind Path=ViewModel.PopupItem, Mode=TwoWay}">
+                    <Popup IsLightDismissEnabled="True" IsOpen="{x:Bind Path=ViewModel.PopupItem, Mode=TwoWay}">
                         <Border BorderBrush="{StaticResource ApplicationForegroundThemeBrush}" 
                 Background="{StaticResource ApplicationPageBackgroundThemeBrush}"
                 BorderThickness="2" Width="400" Height="200">
